@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Holmberg Automotive — Auto Repair San Diego, CA</title>
+    <meta name="description" content="Holmberg Automotive at 7731 Balboa Ave, San Diego 92111. Trusted auto repair, maintenance, and diagnostics.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --blue: #1e3a5f;
+            --blue-light: #2a5490;
+            --blue-bright: #3b82f6;
+            --orange: #f97316;
+            --orange-light: #fb923c;
+            --dark: #111827;
+            --gray-bg: #f3f4f6;
+            --white: #ffffff;
+            --charcoal: #1f2937;
+            --gray: #6b7280;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; color: var(--charcoal); background: var(--white); }
+
+        nav {
+            position: fixed; top: 0; width: 100%; z-index: 100;
+            background: rgba(30,58,95,0.97); backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .nav-brand {
+            font-family: 'Archivo', sans-serif;
+            color: var(--white);
+            font-size: 1.2rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+        .nav-brand span { color: var(--orange); }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a {
+            color: rgba(255,255,255,0.8); text-decoration: none;
+            font-size: 0.85rem; font-weight: 500;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover { color: var(--orange); }
+        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; }
+        .hamburger span { width: 25px; height: 2px; background: var(--orange); }
+
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--blue) 0%, var(--dark) 100%);
+            display: flex; align-items: center;
+            padding: 6rem 2rem;
+            position: relative;
+        }
+        .hero-content { max-width: 1100px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+        .hero-text { }
+        .hero-badge {
+            display: inline-block; background: rgba(249,115,22,0.15);
+            color: var(--orange); padding: 0.4rem 1rem;
+            border-radius: 50px; font-size: 0.8rem; font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+        .hero h1 {
+            font-family: 'Archivo', sans-serif;
+            color: var(--white);
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 1rem;
+        }
+        .hero h1 span { color: var(--orange); }
+        .hero p { color: rgba(255,255,255,0.7); font-size: 1.05rem; line-height: 1.7; margin-bottom: 2rem; }
+        .hero-features {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+        }
+        .hero-feature {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 1.25rem;
+            text-align: center;
+        }
+        .hero-feature .num {
+            font-family: 'Archivo', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--orange);
+        }
+        .hero-feature .label { color: rgba(255,255,255,0.6); font-size: 0.8rem; margin-top: 0.2rem; }
+
+        .btn {
+            display: inline-block; padding: 0.9rem 2rem;
+            text-decoration: none; font-weight: 600;
+            font-size: 0.9rem; border-radius: 8px;
+            transition: all 0.3s;
+        }
+        .btn-orange { background: var(--orange); color: var(--white); }
+        .btn-orange:hover { background: var(--orange-light); transform: translateY(-2px); }
+        .btn-white { border: 1.5px solid rgba(255,255,255,0.3); color: var(--white); margin-left: 1rem; }
+        .btn-white:hover { border-color: var(--orange); color: var(--orange); }
+
+        section { padding: 5rem 2rem; }
+        .section-header { text-align: center; margin-bottom: 3rem; }
+        .section-header h2 { font-family: 'Archivo', sans-serif; font-size: 2rem; font-weight: 800; }
+        .section-header p { color: var(--gray); margin-top: 0.5rem; }
+        .orange-line { width: 50px; height: 3px; background: var(--orange); margin: 0.5rem auto; }
+
+        .services { background: var(--gray-bg); }
+        .services-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem; max-width: 1100px; margin: 0 auto;
+        }
+        .service-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 2rem;
+            border: 1px solid #e5e7eb;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .service-card:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
+        .service-icon { font-size: 2rem; margin-bottom: 1rem; }
+        .service-card h3 { font-family: 'Archivo', sans-serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .service-card p { color: var(--gray); font-size: 0.88rem; line-height: 1.6; }
+
+        .trust { background: var(--blue); color: var(--white); text-align: center; }
+        .trust .section-header h2 { color: var(--white); }
+        .trust-grid {
+            display: flex; justify-content: center; gap: 4rem; flex-wrap: wrap;
+        }
+        .trust-item { text-align: center; }
+        .trust-item .icon { font-size: 2.5rem; margin-bottom: 0.75rem; }
+        .trust-item h3 { font-size: 1rem; margin-bottom: 0.3rem; }
+        .trust-item p { color: rgba(255,255,255,0.6); font-size: 0.85rem; }
+
+        .cta {
+            background: var(--dark); color: var(--white); text-align: center;
+        }
+        .cta h2 { font-family: 'Archivo', sans-serif; font-size: 2rem; font-weight: 800; margin-bottom: 1rem; }
+        .cta p { color: rgba(255,255,255,0.6); margin-bottom: 2rem; max-width: 500px; margin-left: auto; margin-right: auto; }
+        .cta-info {
+            display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; margin-bottom: 2.5rem;
+        }
+        .cta-item .label { color: var(--orange); font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 0.3rem; font-weight: 600; }
+        .cta-item a { color: var(--white); text-decoration: none; font-size: 1.1rem; }
+        .cta-item a:hover { color: var(--orange); }
+
+        .map-container { max-width: 700px; margin: 0 auto; border-radius: 12px; overflow: hidden; border: 2px solid rgba(249,115,22,0.2); }
+        .map-container iframe { width: 100%; height: 300px; border: none; }
+
+        footer {
+            background: var(--dark); border-top: 1px solid rgba(255,255,255,0.05);
+            color: var(--gray); text-align: center; padding: 2rem; font-size: 0.8rem;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hamburger { display: flex; }
+            .nav-links.active {
+                display: flex; flex-direction: column; position: absolute;
+                top: 100%; left: 0; right: 0;
+                background: var(--blue); padding: 1.5rem 2rem; gap: 1rem;
+            }
+            .hero-content { grid-template-columns: 1fr; gap: 2rem; }
+            .hero h1 { font-size: 2.2rem; }
+            .btn-white { margin-left: 0; margin-top: 1rem; }
+            .hero .btn { display: block; width: 100%; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-brand">HOLMBERG <span>AUTO</span></div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#services">Services</a></li>
+            <li><a href="#trust">Why Us</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('active')" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="hero-badge">San Diego's Trusted Mechanic</div>
+                <h1>Holmberg <span>Automotive</span></h1>
+                <p>Honest, reliable auto repair on Balboa Ave. From routine maintenance to complex diagnostics — we keep San Diego driving.</p>
+                <a href="#contact" class="btn btn-orange">Get a Quote</a>
+                <a href="#services" class="btn btn-white">Our Services</a>
+            </div>
+            <div class="hero-features">
+                <div class="hero-feature">
+                    <div class="num">ASE</div>
+                    <div class="label">Certified Technicians</div>
+                </div>
+                <div class="hero-feature">
+                    <div class="num">All</div>
+                    <div class="label">Makes & Models</div>
+                </div>
+                <div class="hero-feature">
+                    <div class="num">Fair</div>
+                    <div class="label">Transparent Pricing</div>
+                </div>
+                <div class="hero-feature">
+                    <div class="num">12mo</div>
+                    <div class="label">Parts Warranty</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <div class="section-header">
+            <h2>Our Services</h2>
+            <div class="orange-line"></div>
+            <p>Complete auto care under one roof</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🔧</div>
+                <h3>General Repair</h3>
+                <p>Engine, transmission, cooling system, and more. We handle all mechanical repairs.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🛢️</div>
+                <h3>Oil Change & Lube</h3>
+                <p>Conventional, synthetic, and high-mileage oil changes with multi-point inspection.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🔌</div>
+                <h3>Diagnostics</h3>
+                <p>Check engine light? We use advanced diagnostics to find the problem fast.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🛞</div>
+                <h3>Brakes & Tires</h3>
+                <p>Brake pads, rotors, tire rotation, alignment, and new tire installation.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">❄️</div>
+                <h3>A/C & Heating</h3>
+                <p>Climate control diagnostics, recharge, and full A/C system repair.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">⚡</div>
+                <h3>Electrical</h3>
+                <p>Battery, alternator, starter, and full electrical system diagnostics.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🔍</div>
+                <h3>Inspections</h3>
+                <p>Pre-purchase inspections, smog checks, and comprehensive vehicle assessments.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🔩</div>
+                <h3>Preventive Maintenance</h3>
+                <p>Timing belts, fluid flushes, tune-ups — keep your car running smooth.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="trust" id="trust">
+        <div class="section-header">
+            <h2>Why Holmberg Automotive</h2>
+            <div class="orange-line"></div>
+        </div>
+        <div class="trust-grid">
+            <div class="trust-item">
+                <div class="icon">🏆</div>
+                <h3>Honest Estimates</h3>
+                <p>No hidden fees, no upselling</p>
+            </div>
+            <div class="trust-item">
+                <div class="icon">🔧</div>
+                <h3>Quality Parts</h3>
+                <p>OEM and premium aftermarket</p>
+            </div>
+            <div class="trust-item">
+                <div class="icon">🤝</div>
+                <h3>Customer First</h3>
+                <p>We explain before we repair</p>
+            </div>
+            <div class="trust-item">
+                <div class="icon">📍</div>
+                <h3>Local & Trusted</h3>
+                <p>Serving San Diego for years</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta" id="contact">
+        <h2>Schedule Service Today</h2>
+        <p>Call us or stop by. We'll take a look and give you an honest assessment.</p>
+        <div class="cta-info">
+            <div class="cta-item">
+                <div class="label">Address</div>
+                <div>7731 Balboa Ave, San Diego 92111</div>
+            </div>
+            <div class="cta-item">
+                <div class="label">Hours</div>
+                <div>Mon–Fri: 8AM–5:30PM | Sat: 8AM–1PM</div>
+            </div>
+        </div>
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3351.0!2d-117.16!3d32.82!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80dbff7e8a2b1e3f%3A0x1234567890abcdef!2s7731%20Balboa%20Ave%2C%20San%20Diego%2C%20CA%2092111!5e0!3m2!1sen!2sus!4v1" allowfullscreen loading="lazy"></iframe>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Holmberg Automotive. All rights reserved. | San Diego, CA</p>
+    </footer>
+</body>
+</html>
